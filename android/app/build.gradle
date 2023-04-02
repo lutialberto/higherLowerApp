@@ -88,6 +88,10 @@ def reactNativeArchitectures() {
     return value ? value.split(",") : ["armeabi-v7a", "x86", "x86_64", "arm64-v8a"]
 }
 
+def getDate() {
+    return new Date().format('yyyyMMdd')
+}
+
 android {
     ndkVersion rootProject.ext.ndkVersion
 
@@ -99,7 +103,8 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName "1.0"
+        versionName "0.1.0"
+        archivesBaseName = "${applicationId}-${getDate()}-${versionName}(${versionCode})"
     }
 
     splits {
@@ -125,7 +130,6 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
