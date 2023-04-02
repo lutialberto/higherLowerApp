@@ -7,15 +7,7 @@
 
 import React from 'react';
 import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {ScrollView, StyleSheet, Text, useColorScheme, View} from 'react-native';
 
 import {
   Colors,
@@ -24,6 +16,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import ScreenContainer from '~/components/containers/screenContainer/ScreenContainer';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -63,11 +56,7 @@ function App(): JSX.Element {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
+    <ScreenContainer>
       <ScrollView contentInsetAdjustmentBehavior="automatic" style={backgroundStyle}>
         <Header />
         <View
@@ -88,7 +77,7 @@ function App(): JSX.Element {
           <LearnMoreLinks />
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </ScreenContainer>
   );
 }
 
